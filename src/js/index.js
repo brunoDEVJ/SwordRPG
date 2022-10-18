@@ -39,7 +39,7 @@ class Jogador {
 }
 
 class Plataforma {
-    constructor({ x, y, image }) {
+    constructor({ x, y }) {
         this.posicao =
         {
             x: x,
@@ -49,17 +49,18 @@ class Plataforma {
         this.width = 200
         this.height = 20
 
-        this.image = image
+        this.image = new Image()
+        this.image.src = '../imgs/platform.png'
     }
     desenhar() {
-        contexto.drawImage(this.image, this.posicao.x, this.posicao.y)
+        contexto.style = 'blue'
+        contexto.fillRect(this.posicao.x, this.posicao.y, this.width, this.height)
        
     }
 }
 
-const image = new Image()
-image.src = ''
-console.log(image)
+
+
 
 const jogador = new Jogador()
 const plataformas =
@@ -67,7 +68,7 @@ const plataformas =
         new Plataforma({
             x: 200,
             y: 100,
-            image
+            
         }),
         new Plataforma({
             x: 500,
@@ -143,7 +144,7 @@ window.addEventListener('keydown', ({ key }) => {
     console.log(key)
     switch (key) {
         case 'w':
-            jogador.velocidade.y -= 5
+            jogador.velocidade.y -= 20
             break
         case 's':
             break
